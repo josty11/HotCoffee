@@ -50,7 +50,7 @@
                     <navigationItem key="navigationItem" title="Orders" id="pSa-Gh-w2p">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="XiW-cJ-La8">
                             <connections>
-                                <segue destination="dX2-Tc-NNb" kind="show" id="VFb-J6-JA6"/>
+                                <segue destination="FZq-cA-SL9" kind="presentation" id="VFb-J6-JA6"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -64,11 +64,11 @@
             <objects>
                 <viewController id="dX2-Tc-NNb" customClass="AddOrderViewController" customModule="HotCoffee" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="e6X-DK-Umc">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="hXM-yB-4Kx">
-                                <rect key="frame" x="0.0" y="88" width="414" height="387"/>
+                                <rect key="frame" x="0.0" y="56" width="414" height="393"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CoffeeTypeTableViewCell" id="1Ph-kE-wuz">
@@ -86,7 +86,7 @@
                                 </connections>
                             </tableView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PEU-5h-Lkm">
-                                <rect key="frame" x="104" y="653" width="200" height="34"/>
+                                <rect key="frame" x="104" y="633" width="200" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="r21-KV-Oal"/>
                                 </constraints>
@@ -94,7 +94,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mpi-Zu-iRr">
-                                <rect key="frame" x="107" y="597" width="200" height="34"/>
+                                <rect key="frame" x="107" y="577" width="200" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="VVK-R8-oVc"/>
                                 </constraints>
@@ -116,7 +116,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Add New Order" id="eOY-IN-0sW">
-                        <barButtonItem key="leftBarButtonItem" title="Close" id="ZHv-xz-2CG"/>
+                        <barButtonItem key="leftBarButtonItem" title="Close" id="ZHv-xz-2CG">
+                            <connections>
+                                <action selector="close" destination="dX2-Tc-NNb" id="Q3U-k0-aYI"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Save" id="pQL-td-Hmr">
                             <connections>
                                 <action selector="save" destination="dX2-Tc-NNb" id="J4Q-VO-dsf"/>
@@ -131,7 +135,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vyS-0Q-Vkr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1556.521739130435" y="101.78571428571428"/>
+            <point key="canvasLocation" x="2466.666666666667" y="101.78571428571428"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="8hP-wZ-iaW">
@@ -150,6 +154,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MwM-TT-vRh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-155.07246376811597" y="102.45535714285714"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="GEU-GX-kA1">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="FZq-cA-SL9" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="cdH-fe-vHP">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="dX2-Tc-NNb" kind="relationship" relationship="rootViewController" id="Fm8-xw-A20"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kd8-EP-99e" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1556.521739130435" y="101.78571428571428"/>
         </scene>
     </scenes>
     <resources>
