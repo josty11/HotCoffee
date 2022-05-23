@@ -9,26 +9,44 @@ import UIKit
 
 class OrdersTableViewController: UITableViewController {
 
+    var orderListViewModel = OrderListViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        populateOrders()
     }
 
+    
+    private func populateOrders() {
+        guard let coffeeOrdersUrl = URL(string: "https://guarded-retreat-82533.herokuapp.com/orders") else {
+            fatalError("URL is not correct")
+        }
+        
+        let resource = Resource<[Order]>(url: coffeeOrdersUrl)
+        Webservice().load(resource: resource) { [weak self] result in
+            switch result {
+            case .success(let orders):
+                self?.orderListViewModel.ordersViewModel = orders.map(OrderViewModel.init)
+                self?.tableView.reloadData()
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return self.orderListViewModel.ordersViewModel.count
     }
-
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let vm = self.orderListViewModel.orderViewModel(at: indexPath.row)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "OrderTableViewCell", for: indexPath)
+        cell.textLabel?.text = vm.type
+        cell.detailTextLabel?.text = vm.size
+        return cell
+    }
 }
